@@ -1,4 +1,9 @@
 <html>
+
+<head>
+  <script src="scripts/social.js"></script>
+</head>
+
 <body>
 
 <script>
