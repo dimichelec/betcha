@@ -1,8 +1,8 @@
 <html>
 
-<head>
-  <script src="scripts/social.js"></script>
-</head>
+  <head>
+    <script src="scripts/social.js"></script>
+  </head>
 
 <body>
 
