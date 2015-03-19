@@ -26,10 +26,11 @@
         FB.api('/me?fields=id,name', function(data) {
 
           var welcomeBlock = document.getElementById('fb-welcome');
-          welcomeBlock.innerHTML = '<ul>',
-            '<li>Name: ',data.name,'</li>',
-            '<li>Number: ',data.id,'</li>', 
-            '</ul>';
+          welcomeBlock.innerHTML = '<ul>'
+            + '<li>Name: ' + data.name + ' (' + data.username + ')</li>'
+            + '<li>Number: ' + data.id + '</li>'
+            + '<li>Quotes: ' + data.quotes + '</li>'
+            + '</ul>';
         });
       }
     }
