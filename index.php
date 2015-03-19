@@ -51,7 +51,6 @@
     
   };
   
-  /*
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
      if (d.getElementById(id)) {return;}
@@ -59,7 +58,7 @@
      js.src = "//connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
-   */
+
 </script>
 
 <h1 id="fb-welcome"></h1>
