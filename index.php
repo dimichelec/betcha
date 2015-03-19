@@ -18,18 +18,15 @@
 
     // ADD ADDITIONAL FACEBOOK CODE HERE
     
-    FB.Event.subscribe('auth.authResponseChange', onAuthResponseChange);
-    FB.Event.subscribe('auth.statusChange', onStatusChange);
+    //FB.Event.subscribe('auth.authResponseChange', onAuthResponseChange);
+    //FB.Event.subscribe('auth.statusChange', onStatusChange);
 
-    //var welcomeBlock = document.getElementById('fb-welcome');
-    //welcomeBlock.innerHTML = 'Hello, 4!';
-
-    /*
     function onLogin(response) {
       if (response.status == 'connected') {
-        FB.api('/me?fields=first_name', function(data) {
+        FB.api('/me?fields=id,name', function(data) {
+
           var welcomeBlock = document.getElementById('fb-welcome');
-          welcomeBlock.innerHTML = 'Hello, ' + data.first_name + '!';
+          welcomeBlock.innerHTML = 'Hello, ' + data.name + ', #' + data.id + '!';
         });
       }
     }
@@ -46,7 +43,7 @@
         }, {scope: 'user_friends, email'});
       }
     });
-    */
+    
     
   };
   
