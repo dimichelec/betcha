@@ -111,7 +111,7 @@ function onStatusChange(response) {
     });
 
     var welcomeBlock = document.getElementById('fb-welcome');
-    welcomeBlock.innerHTML = friendCache.me.picture.data.url;    
+    welcomeBlock.innerHTML = friendCache.friends.length;    
 
   }
 }
