@@ -25,6 +25,20 @@
       if (response.status == 'connected') {
         FB.api('/me?fields=id,name', function(data) {
 
+//{
+//  "id": "10204394437955152", 
+//  "email": "carmen@proengnv.com", 
+//  "first_name": "Carmen", 
+//  "gender": "male", 
+//  "last_name": "DiMichele", 
+//  "link": "https://www.facebook.com/app_scoped_user_id/10204394437955152/", 
+//  "locale": "en_US", 
+//  "name": "Carmen DiMichele", 
+//  "timezone": -4, 
+//  "updated_time": "2015-03-18T02:11:43+0000", 
+//  "verified": true
+//}
+
           var welcomeBlock = document.getElementById('fb-welcome');
           welcomeBlock.innerHTML = '<ul>'
             + '<li>Name: ' + data.name + ' (' + data.username + ')</li>'
