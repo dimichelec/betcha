@@ -81,6 +81,8 @@ function loginCallback(response) {
   if(response.status != 'connected') {
     top.location.href = appCenterURL;
   }
+  alert('4');
+  
 }
 
 function login(callback) {
@@ -92,7 +94,6 @@ function reRequest(scope, callback) {
 }
 
 function onStatusChange(response) {
-  alert('0');
   if( response.status != 'connected' ) {
     login(loginCallback);
   } else {
@@ -114,11 +115,9 @@ function onStatusChange(response) {
 }
 
 function onAuthResponseChange(response) {
-  alert('1');
   console.log('onAuthResponseChange', response);
   if( response.status == 'connected' ) {
     getPermissions();
-    alert('2');
   }
 }
 
