@@ -95,6 +95,11 @@ function onStatusChange(response) {
   if( response.status != 'connected' ) {
     login(loginCallback);
   } else {
+        
+    var welcomeBlock = document.getElementById('fb-welcome');
+    welcomeBlock.innerHTML = 'Hello, 3!';
+    
+
     getMe(function(){
       getPermissions(function(){
         if(hasPermission('user_friends')) {
