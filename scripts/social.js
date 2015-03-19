@@ -109,7 +109,10 @@ function onStatusChange(response) {
         }
       });
     });
-    alert(friendCache['me']);
+
+    var welcomeBlock = document.getElementById('fb-welcome');
+    welcomeBlock.innerHTML = friendCache;    
+
   }
 }
 
