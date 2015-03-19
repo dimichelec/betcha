@@ -77,12 +77,11 @@ function hasPermission(permission) {
 }
 
 function loginCallback(response) {
+  alert('5');
   console.log('loginCallback',response);
   if(response.status != 'connected') {
     top.location.href = appCenterURL;
   }
-  alert('4');
-  
 }
 
 function login(callback) {
@@ -95,8 +94,10 @@ function reRequest(scope, callback) {
 
 function onStatusChange(response) {
   if( response.status != 'connected' ) {
+    alert('6');
     login(loginCallback);
   } else {
+    alert('7');
     getMe(function(){
       getPermissions(function(){
         if(hasPermission('user_friends')) {
