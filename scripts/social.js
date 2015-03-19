@@ -92,6 +92,7 @@ function reRequest(scope, callback) {
 }
 
 function onStatusChange(response) {
+  alert('0');
   if( response.status != 'connected' ) {
     login(loginCallback);
   } else {
