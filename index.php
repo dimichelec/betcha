@@ -17,7 +17,12 @@
     // ADD ADDITIONAL FACEBOOK CODE HERE
     
     FB.Event.subscribe('auth.authResponseChange', onAuthResponseChange);
+    alert('test');
+    
     FB.Event.subscribe('auth.statusChange', onStatusChange);
+
+    var welcomeBlock = document.getElementById('fb-welcome');
+    welcomeBlock.innerHTML = 'Hello, 4!';
 
     /*
     function onLogin(response) {
