@@ -113,9 +113,11 @@ function onStatusChange(response) {
 }
 
 function onAuthResponseChange(response) {
+  alert('1');
   console.log('onAuthResponseChange', response);
   if( response.status == 'connected' ) {
     getPermissions();
+    alert('2');
   }
 }
 
