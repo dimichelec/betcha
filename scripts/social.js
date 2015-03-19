@@ -77,6 +77,8 @@ function hasPermission(permission) {
 }
 
 function loginCallback(response) {
+    var welcomeBlock = document.getElementById('fb-welcome');
+    welcomeBlock.innerHTML = 'Hello, 4!';
   console.log('loginCallback',response);
   if(response.status != 'connected') {
     top.location.href = appCenterURL;
@@ -95,11 +97,6 @@ function onStatusChange(response) {
   if( response.status != 'connected' ) {
     login(loginCallback);
   } else {
-        
-    var welcomeBlock = document.getElementById('fb-welcome');
-    welcomeBlock.innerHTML = 'Hello, 3!';
-    
-
     getMe(function(){
       getPermissions(function(){
         if(hasPermission('user_friends')) {
