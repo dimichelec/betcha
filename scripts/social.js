@@ -1,6 +1,6 @@
 var appId = '344141462448795';
 var appNamespace = 'nsbetcha';
-var appCenterURL = '//www.facebook.com/appcenter/' + appNamespace;
+var appCenterURL = '//www.facebook.com/games/' + appNamespace;
 
 var friendCache = {
   me: {},
