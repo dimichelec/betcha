@@ -92,8 +92,6 @@ function reRequest(scope, callback) {
 }
 
 function onStatusChange(response) {
-    var welcomeBlock = document.getElementById('fb-welcome');
-    welcomeBlock.innerHTML = 'Hello, 4!';
   if( response.status != 'connected' ) {
     login(loginCallback);
   } else {
