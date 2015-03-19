@@ -21,8 +21,8 @@
     FB.Event.subscribe('auth.authResponseChange', onAuthResponseChange);
     FB.Event.subscribe('auth.statusChange', onStatusChange);
 
-    var welcomeBlock = document.getElementById('fb-welcome');
-    welcomeBlock.innerHTML = 'Hello, 4!';
+    //var welcomeBlock = document.getElementById('fb-welcome');
+    //welcomeBlock.innerHTML = 'Hello, 4!';
 
     /*
     function onLogin(response) {
