@@ -8,10 +8,12 @@
 
 <script>
   window.fbAsyncInit = function() {
+
     FB.init({
-      appId      : '344141462448795',
-      xfbml      : true,
-      version    : 'v2.2'
+      appId: appId,
+      frictionlessRequests: true,
+      status: true,
+      version: 'v2.2'
     });
 
     // ADD ADDITIONAL FACEBOOK CODE HERE
