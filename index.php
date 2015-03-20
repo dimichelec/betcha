@@ -23,7 +23,7 @@
 
     function onLogin(response) {
       if (response.status == 'connected') {
-        FB.api('/me?fields=id,name', function(data) {
+        FB.api('/me', function(data) {
 
 //{
 //  "id": "10204394437955152", 
@@ -43,7 +43,10 @@
           welcomeBlock.innerHTML = '<ul>'
             + '<li>Name: ' + data.name + ' (' + data.username + ')</li>'
             + '<li>Number: ' + data.id + '</li>'
-            + '<li>Quotes: ' + data.quotes + '</li>'
+            + '<li>Gender: ' + data.gender + '</li>'
+            + '<li>e-mail: ' + data.email + '</li>'
+            + '<li>locale: ' + data.locale + '</li>'
+            + '<li>timezone: ' + data.timezone + '</li>'
             + '</ul>';
         });
       }
