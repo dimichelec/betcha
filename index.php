@@ -90,8 +90,7 @@
       }
       
       function searchDone() {
-        var blk = document.getElementById('fb-welcome');
-        blk.innerHTML = blk.innerHTML + 'You have ' + ctlSearch.getResultSetSize + ' patents.'
+        document.getElementById('msg1').innerHTML = 'You have ' + ctlSearch.getResultSetSize() + ' patents.'
       }
 
       var timeVar = setInterval(function () {
@@ -103,6 +102,7 @@
   
     <div id="fb-root" style="background:beige;">
       <h1 id="fb-welcome"></h1>
+      <h2 id="msg1"></h2>
       <div id="searchControl">Loading</div>
     </div>
   
