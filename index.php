@@ -4,6 +4,13 @@
       var appId = '344141462448795';
       var appNamespace = 'nsbetcha';
       var appCenterURL = '//www.facebook.com/games/' + appNamespace;
+      
+      var timeVar = setInterval(function () { timeFunc(); }, 1000);
+      
+      function timeFunc() {
+        var d = new Date();
+        document.getElementById("time-span").innerHTML = d.toLocaleTimeString();
+      }
     </script>
   </head>
 
@@ -67,6 +74,7 @@
     </script>
   
     <h1 id="fb-welcome"></h1>
+    <span id="time-span"></span>
 
   </body>
 </html>
