@@ -39,13 +39,13 @@
                     + '<b>' + data.name + '</b><br>'
                     + '#' + data.id + '<br>'
                     + data.email + '<br>'
-                    + data.gender + ' over ' + (data.age_range.min - 1)
+                    + data.gender + ' over ' + (data.age_range.min - 1) + '<br>'
+                    + '<b><span color="' + ((data.verified == 'true') ? 'green">verified' : 'red">not verified' ) + '</span></b>'
                   + '</td>'
                   + '</tr></table>'
                   + '<ul>'
                   + '<li>locale: ' + data.locale + '</li>'
                   + '<li>timezone: ' + data.timezone + '</li>'
-                  + '<li>timezone: ' + data.verified + '</li>'
                   + '</ul>';
             });
           }
