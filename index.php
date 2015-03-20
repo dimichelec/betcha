@@ -15,14 +15,12 @@
       var searchOK = false;
       var fbOK = false;
       
-      //google.load('search', '1', {'callback' : searchLoaded});
       google.load('search', '1', {'callback' : function() {
         searchOK = true;
         if( fbOK ) loaded();
       }});
 
       window.fbAsyncInit = function() {
-  
         FB.init({
           appId: appId,
           frictionlessRequests: true,
@@ -30,8 +28,6 @@
           version: 'v2.2'
         });
     
-        // ADD ADDITIONAL FACEBOOK CODE HERE
-        
         function onLogin(response) {
           if (response.status == 'connected') {
             FB.api('/me',
@@ -88,9 +84,14 @@
         var ctl = new google.search.SearchControl();
         ctl.addSearcher(new google.search.PatentSearch());
         ctl.draw(document.getElementById("searchControl"));
+        clt.setSearchCompleteCallback(this, searchDone, ctl.getResultSetSize());
         ctl.execute(userData.name);
       }
       
+      function searchDone(num) {
+        var blk = document.getElementById('fb-welcome');
+        blk.innerHTML = blk.innerHTML + 'You have ' + num + ' patents.'
+      }
 
       var timeVar = setInterval(function () {
         var d = new Date();
