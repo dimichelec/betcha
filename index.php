@@ -42,7 +42,7 @@
                     + data.gender + ' over ' + (data.age_range.min - 1) + '<br>'
                     + '<b><span style="color:' + (data.verified ? 'green">' : 'red">not ' ) + 'verified</span></b>'
                   + '</td></tr>'
-                  + '<tr><td span=2 id="time-span"></td></tr>'
+                  + '<tr><td span="2" id="time-span" align="center"></td></tr>'
                   + '</table>'
                   + '<ul>'
                   + '<li>locale: ' + data.locale + '</li>'
