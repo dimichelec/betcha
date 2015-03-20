@@ -39,7 +39,7 @@
                     + '<b>' + data.name + '</b><br>'
                     + '#' + data.id + '<br>'
                     + data.email + '<br>'
-                    + 'older than ' + (data.age_range.min - 1) + ', ' + data.gender
+                    + data.gender + ' over ' + (data.age_range.min - 1)
                   + '</td>'
                   + '</tr></table>'
                   + '<ul>'
