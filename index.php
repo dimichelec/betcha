@@ -92,8 +92,8 @@
         if (patentSearch.results && patentSearch.results.length > 0) {
           document.getElementById('msg1').innerHTML = 'found ' + patentSearch.results.length + ' of your patents';
           for (var i = 0; i < patentSearch.results.length; i++) {
-            document.getElementById('msg1').innerHTML +=
-              + '<p><a href="' + patentSearch.results[i].unescapedUrl + '" target="_blank">'
+            document.getElementById('msg1').innerHTML += '<p>'
+              + '<a href="' + patentSearch.results[i].unescapedUrl + '" target="_blank">'
               + patentSearch.results[i].title + '</a></p>';
           }
         }
