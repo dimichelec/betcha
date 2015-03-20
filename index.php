@@ -1,11 +1,5 @@
 <html>
-
-  <head>
-    <script src="scripts/social.js"></script>
-  </head>
-
 <body>
-
 <script>
   window.fbAsyncInit = function() {
 
@@ -18,9 +12,6 @@
 
     // ADD ADDITIONAL FACEBOOK CODE HERE
     
-    //FB.Event.subscribe('auth.authResponseChange', onAuthResponseChange);
-    //FB.Event.subscribe('auth.statusChange', onStatusChange);
-
     function onLogin(response) {
       if (response.status == 'connected') {
         FB.api('/me',
@@ -34,6 +25,7 @@
               + '<li>e-mail: ' + data.email + '</li>'
               + '<li>locale: ' + data.locale + '</li>'
               + '<li>timezone: ' + data.timezone + '</li>'
+              + '<li>timezone: ' + data.birthday + '</li>'
               + '</ul>';
         });
       }
