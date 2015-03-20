@@ -13,13 +13,14 @@
     <script>
       // Google Search API
       var searchLoaded = false;
-      var ctlSearch;
+      var patentSearch;
 
       google.load('search', '1', {'callback' : function() {
-        ctlSearch = new google.search.SearchControl();
-        ctlSearch.addSearcher(new google.search.PatentSearch());
-        ctlSearch.draw(document.getElementById("searchControl"));
-        ctlSearch.setSearchCompleteCallback(this, searchDone);        
+        //var ctlSearch = new google.search.SearchControl();
+        patentSearch = new google.search.PatentSearch();
+        //ctlSearch.addSearcher(patentSearch);
+        //ctlSearch.draw(document.getElementById("searchControl"));
+        ctlSearch.setSearchCompleteCallback(this, searchDone, null);        
         if( fbLoaded ) loaded();
         searchLoaded = true;
       }});
@@ -86,16 +87,16 @@
           + '<li>timezone: ' + userData.timezone + '</li>'
           + '</ul>';
 
-        ctlSearch.execute(userData.name);
+        patentSearch.execute(userData.name);
       }
       
       function searchDone() {
-        document.getElementById('msg1').innerHTML = 'You have ' + ctlSearch.getResultSetSize() + ' patents.';
+        document.getElementById('msg1').innerHTML = patentSearch.results;
       }
 
+      var openTime = 0;
       var timeVar = setInterval(function () {
-        var d = new Date();
-        document.getElementById("time-span").innerHTML = d.toLocaleTimeString();
+        document.getElementById("time-span").innerHTML = 'open for ' + ++openTime + ' seconds';
       }, 1000);
 
     </script>
