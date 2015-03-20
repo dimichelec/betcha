@@ -6,44 +6,53 @@
       var appNamespace = 'nsbetcha';
       var appCenterURL = '//www.facebook.com/games/' + appNamespace;
       
-      var timeVar = setInterval(function () { timeFunc(); }, 1000);
-      
-      google.load('search', '1');
-      google.setOnLoadCallback(searchLoaded);
-      
-      function searchLoaded() {
-        var ctl = new google.search.SearchControl();
-        var localSearch = new google.search.LocalSearch();
-        ctl.addSearcher(localSearch);
-        ctl.addSearcher(new google.search.WebSearch());
-        ctl.addSearcher(new google.search.VideoSearch());
-        ctl.addSearcher(new google.search.BlogSearch());
-        ctl.addSearcher(new google.search.NewsSearch());
-        ctl.addSearcher(new google.search.ImageSearch());
-        ctl.addSearcher(new google.search.BookSearch());
-        ctl.addSearcher(new google.search.PatentSearch());
-
-        // Set the Local Search center point
-        localSearch.setCenterPoint("New York, NY");
-
-        // tell the searcher to draw itself and tell it where to attach
-        ctl.draw(document.getElementById("searchControl"));
-
-        // execute an inital search
-        ctl.execute("VW GTI");      
-      }
-      
-      function timeFunc() {
-        var d = new Date();
-        document.getElementById("time-span").innerHTML = d.toLocaleTimeString();
-      }
     </script>
   </head>
 
   <body>
     <script>
+      var timeVar = setInterval(function () { timeFunc(); }, 1000);
+      var userData;
+      var searchOK = false;
+      var fbOK = false;
+      
+      function timeFunc() {
+        var d = new Date();
+        document.getElementById("time-span").innerHTML = d.toLocaleTimeString();
+      }
+
+      google.load('search', '1', {'callback' : searchLoaded});
+      function searchLoaded() {
+        searchOK = true;
+        if( fbOK ) loaded();
+      }
+      
+      function loaded() {
+        var blk = document.getElementById('fb-welcome');
+        blk.innerHTML = '<table><tr>'
+          + '<td style="width:130px;"><img src="' + userData.picture.data.url + '"></td>'
+          + '<td style="vertical-align:top;">'
+            + '<b>' + userData.name + '</b><br>'
+            + '#' + userData.id + '<br>'
+            + userData.email + '<br>'
+            + userData.gender + ' over ' + (userData.age_range.min - 1) + '<br>'
+            + '<b><span style="color:' + (userData.verified ? 'green">' : 'red">not ' ) + 'verified</span></b><br>'
+            + '<span id="time-span" align="center"></span>'
+          + '</td>'
+          + '</tr></table>'
+          + '<ul>'
+          + '<li>locale: ' + userData.locale + '</li>'
+          + '<li>timezone: ' + userData.timezone + '</li>'
+          + '</ul>';
+
+        var ctl = new google.search.SearchControl();
+        ctl.addSearcher(new google.search.PatentSearch());
+        ctl.draw(document.getElementById("searchControl"));
+        ctl.execute(userData.name);
+      }
+      
       window.fbAsyncInit = function() {
-    
+  
         FB.init({
           appId: appId,
           frictionlessRequests: true,
@@ -58,22 +67,9 @@
             FB.api('/me',
               {fields: 'id,name,gender,email,picture.width(120).height(120),age_range,verified,locale,timezone'},
               function(data) {
-                var blk = document.getElementById('fb-welcome');
-                blk.innerHTML = '<table><tr>'
-                  + '<td style="width:130px;"><img src="' + data.picture.data.url + '"></td>'
-                  + '<td style="vertical-align:top;">'
-                    + '<b>' + data.name + '</b><br>'
-                    + '#' + data.id + '<br>'
-                    + data.email + '<br>'
-                    + data.gender + ' over ' + (data.age_range.min - 1) + '<br>'
-                    + '<b><span style="color:' + (data.verified ? 'green">' : 'red">not ' ) + 'verified</span></b><br>'
-                    + '<span id="time-span" align="center"></span>'
-                  + '</td>'
-                  + '</tr></table>'
-                  + '<ul>'
-                  + '<li>locale: ' + data.locale + '</li>'
-                  + '<li>timezone: ' + data.timezone + '</li>'
-                  + '</ul>';
+                userData = data;
+                fbOK = true;
+                if( searchOK ) loaded();
             });
           }
         }
