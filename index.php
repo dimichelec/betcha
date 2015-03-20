@@ -88,11 +88,13 @@
       }
       
       function searchDone() {
+        google.search.Search.getBranding('branding');
+        document.getElementById('msg2').innerHTML = '';
         document.getElementById('msg1').innerHTML = "no patents were found for you";
         if (patentSearch.results && patentSearch.results.length > 0) {
           document.getElementById('msg1').innerHTML = 'found ' + patentSearch.results.length + ' of your patents';
           for (var i = 0; i < patentSearch.results.length; i++) {
-            document.getElementById('msg1').innerHTML += '<p>'
+            document.getElementById('msg2').innerHTML += '<p>'
               + '<a href="' + patentSearch.results[i].unescapedUrl + '" target="_blank">'
               + patentSearch.results[i].title + '</a></p>';
           }
@@ -113,7 +115,8 @@
   
     <div id="fb-root" style="background:beige;">
       <h1 id="fb-welcome"></h1>
-      <h2 id="msg1"></h2>
+      <h3 id="msg1"></h3><div id="branding"></div>
+      <h2 id="msg2"></h2>
     </div>
   
   </body>
