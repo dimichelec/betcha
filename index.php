@@ -23,31 +23,18 @@
 
     function onLogin(response) {
       if (response.status == 'connected') {
-        FB.api('/me', function(data) {
-
-//{
-//  "id": "10204394437955152", 
-//  "email": "carmen@proengnv.com", 
-//  "first_name": "Carmen", 
-//  "gender": "male", 
-//  "last_name": "DiMichele", 
-//  "link": "https://www.facebook.com/app_scoped_user_id/10204394437955152/", 
-//  "locale": "en_US", 
-//  "name": "Carmen DiMichele", 
-//  "timezone": -4, 
-//  "updated_time": "2015-03-18T02:11:43+0000", 
-//  "verified": true
-//}
-
-          var welcomeBlock = document.getElementById('fb-welcome');
-          welcomeBlock.innerHTML = '<ul>'
-            + '<li>Name: ' + data.name + ' (' + data.username + ')</li>'
-            + '<li>Number: ' + data.id + '</li>'
-            + '<li>Gender: ' + data.gender + '</li>'
-            + '<li>e-mail: ' + data.email + '</li>'
-            + '<li>locale: ' + data.locale + '</li>'
-            + '<li>timezone: ' + data.timezone + '</li>'
-            + '</ul>';
+        FB.api('/me',
+          {fields: 'id,name,gender,email,picture.width(120).height(120),birthday,hometown,age_range,location,verified'},
+          function(data) {
+            var blk = document.getElementById('fb-welcome');
+            blk.innerHTML = '<img src="' + data.picture.url + '">'
+              + '<ul>'
+              + '<li>Name: ' + data.name + ' (#' + data.id + ')</li>'
+              + '<li>Gender: ' + data.gender + '</li>'
+              + '<li>e-mail: ' + data.email + '</li>'
+              + '<li>locale: ' + data.locale + '</li>'
+              + '<li>timezone: ' + data.timezone + '</li>'
+              + '</ul>';
         });
       }
     }
