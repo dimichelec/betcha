@@ -90,10 +90,10 @@
       function searchDone() {
         document.getElementById('msg1').innerHTML = "no patents were found for you";
         if (patentSearch.results && patentSearch.results.length > 0) {
-          document.getElementById('msg1').innerHTML = '';
+          document.getElementById('msg1').innerHTML = 'found ' + patentSearch.results.length + ' of your patents';
           for (var i = 0; i < patentSearch.results.length; i++) {
             document.getElementById('msg1').innerHTML += '<p>'
-              + '<a href="/patent-search/v1/' + patentSearch.results[i].unescapedUrl + '">'
+              + '<a href="' + patentSearch.results[i].unescapedUrl + '">'
               + patentSearch.results[i].title + '</a></p>';
           }
         }
@@ -101,7 +101,12 @@
 
       var openTime = 0;
       var timeVar = setInterval(function () {
-        document.getElementById("time-span").innerHTML = 'open for ' + ++openTime + ' seconds';
+        var out = '';
+        var h = Math.floor( openTime / 3600 );  if( h > 0 ) out = h + " hours";
+        var m = Math.floor( openTime / 60 ) - ( h * 60 ); if( m > 0 ) out += (( out != '' ) ? ', ' : '' ) + m + ' minutes';
+        var s = openTime % 60; if( s > 0 ) out += (( out != '' ) ? ', ' : '' ) + s + ' seconds';
+        document.getElementById("time-span").innerHTML = 'open for ' + out;
+        openTime++;
       }, 1000);
 
     </script>
@@ -109,7 +114,6 @@
     <div id="fb-root" style="background:beige;">
       <h1 id="fb-welcome"></h1>
       <h2 id="msg1"></h2>
-      <div id="searchControl">Loading</div>
     </div>
   
   </body>
