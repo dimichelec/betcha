@@ -16,10 +16,7 @@
       var patentSearch;
 
       google.load('search', '1', {'callback' : function() {
-        //var ctlSearch = new google.search.SearchControl();
         patentSearch = new google.search.PatentSearch();
-        //ctlSearch.addSearcher(patentSearch);
-        //ctlSearch.draw(document.getElementById("searchControl"));
         patentSearch.setSearchCompleteCallback(this, searchDone, null);        
         if( fbLoaded ) loaded();
         searchLoaded = true;
@@ -91,7 +88,21 @@
       }
       
       function searchDone() {
-        document.getElementById('msg1').innerHTML = patentSearch.results;
+        document.getElementById('msg1').innerHTML = "no patents were found for you";
+        if (patentSearch.results && patentSearch.results.length > 0) {
+          document.getElementById('msg1').innerHTML = '';
+          for (var i = 0; i < patentSearch.results.length; i++) {
+
+            // Create HTML elements for search results
+            var p = document.createElement('p');
+            var a = document.createElement('a');
+            a.href="/patent-search/v1/patentSearch.results[i].unescapedUrl;"
+            a.innerHTML = patentSearch.results[i].title;
+
+            // Append search results to the HTML nodes
+            p.appendChild(a);
+            document.getElementById('msg1').innerHTML.appendChild(p);
+          }
       }
 
       var openTime = 0;
