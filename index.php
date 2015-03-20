@@ -115,8 +115,9 @@
   
     <div id="fb-root" style="background:beige;">
       <h1 id="fb-welcome"></h1>
-      <h3 id="msg1"></h3><div id="branding"></div>
+      <h3 id="msg1"></h3>
       <h2 id="msg2"></h2>
+      <div id="branding"></div>
     </div>
   
   </body>
