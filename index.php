@@ -33,9 +33,11 @@
               {fields: 'id,name,gender,email,picture.width(120).height(120),age_range,verified,locale,timezone'},
               function(data) {
                 var blk = document.getElementById('fb-welcome');
-                blk.innerHTML = '<img src="' + data.picture.data.url + '">'
+                blk.innerHTML = '<table><tr>'
+                  + '<td><img src="' + data.picture.data.url + '"></td>'
+                  + '<td>' + data.name + '<br>#' + data.id + '</td>'
+                  + '</tr></table>'
                   + '<ul>'
-                  + '<li>Name: ' + data.name + ' (#' + data.id + ')</li>'
                   + '<li>Gender: ' + data.gender + '</li>'
                   + '<li>e-mail: ' + data.email + '</li>'
                   + '<li>locale: ' + data.locale + '</li>'
