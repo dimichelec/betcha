@@ -1,6 +1,6 @@
 <html>
   <head>
-    <!-- <script src="https://www.google.com/jsapi" type="text/javascript"></script> -->
+    <script src="https://www.google.com/jsapi"></script>
     <script>
       var appId = '344141462448795';
       var appNamespace = 'nsbetcha';
@@ -11,19 +11,23 @@
 
   <body>
     <script>
-      //var ctlSearch;
-      var userData;
-      //var searchOK = false;
-      var fbOK = false;
-      
-      /*
+      // Google Search API
+      var searchLoaded = false;
+      var ctlSearch;
+
       google.load('search', '1', {'callback' : function() {
-        searchOK = true;
-        if( fbOK ) loaded();
+        ctlSearch = new google.search.SearchControl();
+        ctlSearch.addSearcher(new google.search.PatentSearch());
+        ctlSearch.draw(document.getElementById("searchControl"));
+        ctlSearch.setSearchCompleteCallback(this, searchDone);        
+        if( fbLoaded ) loaded();
+        searchLoaded = true;
       }});
-      */
 
       // Facebook API
+      var fbLoaded = false;
+      var userData;
+
       window.fbAsyncInit = function() {
         FB.init({
           appId: appId,
@@ -38,9 +42,8 @@
               {fields: 'id,name,gender,email,picture.width(120).height(120),age_range,verified,locale,timezone'},
               function(data) {
                 userData = data;
-                fbOK = true;
-                //if( searchOK )
-                loaded();
+                if( searchLoaded ) loaded();
+                fbLoaded = true;
             });
           }
         }
@@ -66,44 +69,6 @@
         fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
 
-
-      // Google Custom Search Engine
-      var gcseCallback = function() {
-        if (document.readyState == 'complete') {
-          // Document is ready when CSE element is initialized.
-          // Render an element with both search box and search results in div with id 'test'.
-          google.search.cse.element.render(
-              {
-                div: "searchControl",
-                tag: 'search'
-               });
-        } else {
-          // Document is not ready yet, when CSE element is initialized.
-          google.setOnLoadCallback(function() {
-             // Render an element with both search box and search results in div with id 'test'.
-              google.search.cse.element.render(
-                  {
-                    div: "searchControl",
-                    tag: 'search'
-                  });
-          }, true);
-        }
-      };
-
-      window.__gcse = {
-        parsetags: 'explicit',
-        callback: gcseCallback
-      };
-      
-      (function() {
-        var cx = '123:456'; // Insert your own Custom Search engine ID here
-        var gcse = document.createElement('script'); gcse.type = 'text/javascript';
-        gcse.async = true;
-        gcse.src = (document.location.protocol == 'https' ? 'https:' : 'http:') +
-          '//www.google.com/cse/cse.js?cx=' + cx;
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
-      })();
-
       function loaded() {
         document.getElementById('fb-welcome').innerHTML = '<table><tr>'
           + '<td style="width:130px;"><img src="' + userData.picture.data.url + '"></td>'
@@ -121,12 +86,7 @@
           + '<li>timezone: ' + userData.timezone + '</li>'
           + '</ul>';
 
-      /*  ctlSearch = new google.search.SearchControl();
-        ctlSearch.addSearcher(new google.search.PatentSearch());
-        ctlSearch.draw(document.getElementById("searchControl"));
-        ctlSearch.setSearchCompleteCallback(this, searchDone);
         ctlSearch.execute(userData.name);
-        */
       }
       
       function searchDone() {
