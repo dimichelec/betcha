@@ -77,7 +77,7 @@
     
     </script>
   
-    <div id="fb-root">
+    <div id="fb-root" style="background:beige;">
       <h1 id="fb-welcome"></h1>
       <span id="time-span"></span>
     </div>
