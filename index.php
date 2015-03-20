@@ -92,8 +92,8 @@
         if (patentSearch.results && patentSearch.results.length > 0) {
           document.getElementById('msg1').innerHTML = 'found ' + patentSearch.results.length + ' of your patents';
           for (var i = 0; i < patentSearch.results.length; i++) {
-            document.getElementById('msg1').innerHTML += '<p>'
-              + '<a href="' + patentSearch.results[i].unescapedUrl + '">'
+            document.getElementById('msg1').innerHTML +=
+              + '<p><a href="' + patentSearch.results[i].unescapedUrl + '" target="_blank">'
               + patentSearch.results[i].title + '</a></p>';
           }
         }
@@ -102,9 +102,9 @@
       var openTime = 0;
       var timeVar = setInterval(function () {
         var out = '';
-        var h = Math.floor( openTime / 3600 );  if( h > 0 ) out = h + ' hour' + (h>1)?'s';
-        var m = Math.floor( openTime / 60 ) - ( h * 60 ); if( m > 0 ) out += (( out != '' ) ? ', ' : '' ) + m + ' minute' + (m>1)?'s';
-        var s = openTime % 60; if( s > 0 ) out += (( out != '' ) ? ', ' : '' ) + s + ' second' + (s>1)?'s';
+        var h = Math.floor( openTime / 3600 );  if( h > 0 ) out = h + ' hour' + ( h > 1 ) ? 's' : '';
+        var m = Math.floor( openTime / 60 ) - ( h * 60 ); if( m > 0 ) out += (( out != '' ) ? ', ' : '' ) + m + ' minute' + ( m > 1 ) ? 's' : '';
+        var s = openTime % 60; if( s > 0 ) out += (( out != '' ) ? ', ' : '' ) + s + ' second' + ( s > 1 ) ? 's' : '';
         document.getElementById("time-span").innerHTML = 'open for ' + out;
         openTime++;
       }, 1000);
