@@ -41,8 +41,9 @@
                     + data.email + '<br>'
                     + data.gender + ' over ' + (data.age_range.min - 1) + '<br>'
                     + '<b><span style="color:' + (data.verified ? 'green">' : 'red">not ' ) + 'verified</span></b>'
-                  + '</td>'
-                  + '</tr></table>'
+                  + '</td></tr>'
+                  + '<tr><td span=2 id="time-span"></td></tr>'
+                  + '</table>'
                   + '<ul>'
                   + '<li>locale: ' + data.locale + '</li>'
                   + '<li>timezone: ' + data.timezone + '</li>'
@@ -79,7 +80,6 @@
   
     <div id="fb-root" style="background:beige;">
       <h1 id="fb-welcome"></h1>
-      <span id="time-span"></span>
     </div>
   
   </body>
