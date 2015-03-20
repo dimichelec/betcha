@@ -92,16 +92,9 @@
         if (patentSearch.results && patentSearch.results.length > 0) {
           document.getElementById('msg1').innerHTML = '';
           for (var i = 0; i < patentSearch.results.length; i++) {
-
-            // Create HTML elements for search results
-            var p = document.createElement('p');
-            var a = document.createElement('a');
-            a.href="/patent-search/v1/patentSearch.results[i].unescapedUrl;"
-            a.innerHTML = patentSearch.results[i].title;
-
-            // Append search results to the HTML nodes
-            p.appendChild(a);
-            document.getElementById('msg1').innerHTML.appendChild(p);
+            document.getElementById('msg1').innerHTML += '<p>'
+              + '<a href="/patent-search/v1/' + patentSearch.results[i].unescapedUrl + '">'
+              + patentSearch.results[i].title + '</a></p>';
           }
         }
       }
