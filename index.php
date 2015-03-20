@@ -24,10 +24,10 @@
     function onLogin(response) {
       if (response.status == 'connected') {
         FB.api('/me',
-          {fields: 'id,name,gender,email,picture.width(120).height(120),birthday,hometown,age_range,location,verified'},
+          {fields: 'id,name,gender,email,picture.width(120).height(120),birthday,hometown,age_range,location,verified,locale,timezone'},
           function(data) {
             var blk = document.getElementById('fb-welcome');
-            blk.innerHTML = '<img src="' + data.picture.url + '">'
+            blk.innerHTML = '<img src="' + data.picture.data.url + '">'
               + '<ul>'
               + '<li>Name: ' + data.name + ' (#' + data.id + ')</li>'
               + '<li>Gender: ' + data.gender + '</li>'
