@@ -23,7 +23,7 @@
         function onLogin(response) {
           if (response.status == 'connected') {
             FB.api('/me',
-              {fields: 'id,name,gender,email,picture.width(120).height(120),hometown,age_range,location,verified,locale,timezone'},
+              {fields: 'id,name,gender,email,picture.width(120).height(120),age_range,verified,locale,timezone'},
               function(data) {
                 var blk = document.getElementById('fb-welcome');
                 blk.innerHTML = '<img src="' + data.picture.data.url + '">'
@@ -33,7 +33,8 @@
                   + '<li>e-mail: ' + data.email + '</li>'
                   + '<li>locale: ' + data.locale + '</li>'
                   + '<li>timezone: ' + data.timezone + '</li>'
-                  + '<li>timezone: ' + data.hometown + '</li>'
+                  + '<li>minAge: ' + data.age_range.min + '</li>'
+                  + '<li>timezone: ' + data.verified + '</li>'
                   + '</ul>';
             });
           }
