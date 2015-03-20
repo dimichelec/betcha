@@ -1,11 +1,37 @@
 <html>
   <head>
+    <script src="https://www.google.com/jsapi" type="text/javascript"></script>
     <script>
       var appId = '344141462448795';
       var appNamespace = 'nsbetcha';
       var appCenterURL = '//www.facebook.com/games/' + appNamespace;
       
       var timeVar = setInterval(function () { timeFunc(); }, 1000);
+      
+      google.load('search', '1');
+      google.setOnLoadCallback(searchLoaded);
+      
+      function searchLoaded() {
+        var ctl = new google.search.SearchControl();
+        var localSearch = new google.search.LocalSearch();
+        ctl.addSearcher(localSearch);
+        ctl.addSearcher(new google.search.WebSearch());
+        ctl.addSearcher(new google.search.VideoSearch());
+        ctl.addSearcher(new google.search.BlogSearch());
+        ctl.addSearcher(new google.search.NewsSearch());
+        ctl.addSearcher(new google.search.ImageSearch());
+        ctl.addSearcher(new google.search.BookSearch());
+        ctl.addSearcher(new google.search.PatentSearch());
+
+        // Set the Local Search center point
+        localSearch.setCenterPoint("New York, NY");
+
+        // tell the searcher to draw itself and tell it where to attach
+        ctl.draw(document.getElementById("searchControl"));
+
+        // execute an inital search
+        ctl.execute("VW GTI");      
+      }
       
       function timeFunc() {
         var d = new Date();
@@ -80,6 +106,7 @@
   
     <div id="fb-root" style="background:beige;">
       <h1 id="fb-welcome"></h1>
+      <div id="searchControl">Loading</div>
     </div>
   
   </body>
