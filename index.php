@@ -102,9 +102,9 @@
       var openTime = 0;
       var timeVar = setInterval(function () {
         var out = '';
-        var h = Math.floor( openTime / 3600 );  if( h > 0 ) out = h + " hours";
-        var m = Math.floor( openTime / 60 ) - ( h * 60 ); if( m > 0 ) out += (( out != '' ) ? ', ' : '' ) + m + ' minutes';
-        var s = openTime % 60; if( s > 0 ) out += (( out != '' ) ? ', ' : '' ) + s + ' seconds';
+        var h = Math.floor( openTime / 3600 );  if( h > 0 ) out = h + ' hour' + (h>1)?'s';
+        var m = Math.floor( openTime / 60 ) - ( h * 60 ); if( m > 0 ) out += (( out != '' ) ? ', ' : '' ) + m + ' minute' + (m>1)?'s';
+        var s = openTime % 60; if( s > 0 ) out += (( out != '' ) ? ', ' : '' ) + s + ' second' + (s>1)?'s';
         document.getElementById("time-span").innerHTML = 'open for ' + out;
         openTime++;
       }, 1000);
