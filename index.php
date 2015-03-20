@@ -34,15 +34,17 @@
               function(data) {
                 var blk = document.getElementById('fb-welcome');
                 blk.innerHTML = '<table><tr>'
-                  + '<td><img src="' + data.picture.data.url + '"></td>'
-                  + '<td>' + data.name + '<br>#' + data.id + '</td>'
+                  + '<td style="width:130px;"><img src="' + data.picture.data.url + '"></td>'
+                  + '<td style="vertical-align:top;">'
+                    + '<b>' + data.name + '</b><br>'
+                    + '#' + data.id + '<br>'
+                    + data.email + '<br>'
+                    + 'older than ' + (data.age_range.min - 1) + ', ' + data.gender
+                  + '</td>'
                   + '</tr></table>'
                   + '<ul>'
-                  + '<li>Gender: ' + data.gender + '</li>'
-                  + '<li>e-mail: ' + data.email + '</li>'
                   + '<li>locale: ' + data.locale + '</li>'
                   + '<li>timezone: ' + data.timezone + '</li>'
-                  + '<li>minAge: ' + data.age_range.min + '</li>'
                   + '<li>timezone: ' + data.verified + '</li>'
                   + '</ul>';
             });
