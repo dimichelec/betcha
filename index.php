@@ -77,8 +77,10 @@
     
     </script>
   
-    <h1 id="fb-welcome"></h1>
-    <span id="time-span"></span>
-
+    <div id="fb-root">
+      <h1 id="fb-welcome"></h1>
+      <span id="time-span"></span>
+    </div>
+  
   </body>
 </html>
