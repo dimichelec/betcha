@@ -103,6 +103,7 @@
             p.appendChild(a);
             document.getElementById('msg1').innerHTML.appendChild(p);
           }
+        }
       }
 
       var openTime = 0;
