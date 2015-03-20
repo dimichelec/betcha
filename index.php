@@ -20,7 +20,7 @@
         patentSearch = new google.search.PatentSearch();
         //ctlSearch.addSearcher(patentSearch);
         //ctlSearch.draw(document.getElementById("searchControl"));
-        ctlSearch.setSearchCompleteCallback(this, searchDone, null);        
+        patentSearch.setSearchCompleteCallback(this, searchDone, null);        
         if( fbLoaded ) loaded();
         searchLoaded = true;
       }});
