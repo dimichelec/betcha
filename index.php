@@ -11,6 +11,7 @@
 
   <body>
     <script>
+      var ctlSearch;
       var userData;
       var searchOK = false;
       var fbOK = false;
@@ -81,16 +82,16 @@
           + '<li>timezone: ' + userData.timezone + '</li>'
           + '</ul>';
 
-        var ctl = new google.search.SearchControl();
-        ctl.addSearcher(new google.search.PatentSearch());
-        ctl.draw(document.getElementById("searchControl"));
-        clt.setSearchCompleteCallback(this, searchDone, ctl.getResultSetSize());
-        ctl.execute(userData.name);
+        ctlSearch = new google.search.SearchControl();
+        ctlSearch.addSearcher(new google.search.PatentSearch());
+        ctlSearch.draw(document.getElementById("searchControl"));
+        ctlSearch.setSearchCompleteCallback(this, searchDone);
+        ctlSearch.execute(userData.name);
       }
       
-      function searchDone(num) {
+      function searchDone() {
         var blk = document.getElementById('fb-welcome');
-        blk.innerHTML = blk.innerHTML + 'You have ' + num + ' patents.'
+        blk.innerHTML = blk.innerHTML + 'You have ' + ctlSearch.getResultSetSize + ' patents.'
       }
 
       var timeVar = setInterval(function () {
